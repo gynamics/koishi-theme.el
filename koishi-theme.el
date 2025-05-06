@@ -136,6 +136,11 @@
  '(org-checkbox-statistics-done     ((t (:foreground "#8BC34A" :box (:line-width 1 :style released-button)))))
  )
 
+;;;###autoload
+(when load-file-name
+  (add-to-list 'custom-theme-load-path
+               (file-name-as-directory (file-name-directory load-file-name))))
+
 (provide-theme 'koishi)
 
 ;;; koishi-theme.el ends here
