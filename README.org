@@ -1,0 +1,38 @@
+#+title: koishi-theme
+
+The Emacs theme in your subconsciousness!
+
+* About
+
+A simple dark-color theme based on green-yellow-purple colors.
+This is the exclusive theme for [[https://github.com/gynamics/koishimacs][Koishimacs]] (my Emacs config).
+Inspired by Touhou Project's character Komeiji Koishi's color tone.
+
+I try to make it in a colorful but undersaturated style.
+But the output is oversaturated.
+
+* Installation
+
+#+begin_src emacs-lisp
+  ;; >= emacs-30
+  (use-package koishi-theme.el
+    :vc (:url "https://github.com/gynamics/koishi-theme.el")
+    :init
+    ;; enable koishi theme
+    (load-theme 'koishi))
+#+end_src
+
+* Gallery
+
+Code highlights:
+
+[[https://exiled-images.pages.dev/file/AgACAgUAAyEGAASL6SCLAAMLaBo4HhogFXaS1_QHc-9YC-QpB3kAAhrAMRvXj9lUMblPyJKHdLEBAAMCAAN3AAM2BA.png]]
+
+
+Org mode:
+
+[[https://exiled-images.pages.dev/file/AgACAgUAAyEGAASL6SCLAAMMaBo4PUnYdYjWaAk5TEGcVzNf8qEAAhvAMRvXj9lU-xjLym1K2IsBAAMCAAN3AAM2BA.png]]
+
+* Development
+
+Welcome to post your awesome idea in issues!
