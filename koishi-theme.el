@@ -111,6 +111,8 @@
  '(next-error                       ((t (:foreground "#FFFFFF" :background "#E74CAC"))))
  '(query-replace                    ((t (:foreground "#FFFFFF" :background "#256225"))))
  ;; org-mode
+ '(org-document-title               ((t (:foreground "#AEEEEE" :weight bold :height 1.5))))
+ '(org-document-info                ((t (:foreground "#A1CEBE"))))
  '(org-level-1                      ((t (:foreground "#C7B8EA" :weight bold :height 1.25))))
  '(org-level-2                      ((t (:foreground "#A7DCCB" :weight bold :height 1.2))))
  '(org-level-3                      ((t (:foreground "#97CEEB" :weight bold :height 1.15))))
@@ -118,6 +120,8 @@
  '(org-level-5                      ((t (:foreground "#F1C40F" :weight bold :height 1.0))))
  '(org-tag                          ((t (:foreground "#F7DC64"))))
  '(org-link                         ((t (:foreground "#AAF0CC" :underline t))))
+ '(org-date                         ((t (:foreground "#8CE5DB" :underline t))))
+ '(org-footnote                     ((t (:foreground "#7CD5EB"))))
  '(org-done                         ((t (:foreground "#8BC34A" :strike-through t))))
  '(org-todo                         ((t (:foreground "#FBEB87" :weight bold))))
  '(org-headline-done                ((t (:foreground "#90A0B0"))))
@@ -134,6 +138,7 @@
  '(org-checkbox                     ((t (:foreground "#E2C464" :box (:line-width 1 :style released-button)))))
  '(org-checkbox-statistics-todo     ((t (:foreground "#FBEB87" :box (:line-width 1 :style released-button)))))
  '(org-checkbox-statistics-done     ((t (:foreground "#8BC34A" :box (:line-width 1 :style released-button)))))
+ '(org-list-dt                      ((t (:foreground "#C0C0E1"))))
  )
 
 ;;;###autoload
