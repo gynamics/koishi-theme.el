@@ -84,7 +84,7 @@
  '(font-lock-regexp-grouping-backslash ((t (:inherit (bold)))))
  '(font-lock-regexp-grouping-construct ((t (:inherit (bold)))))
  ;; decorations
- '(underline                        ((t (:inherit))))
+ '(underline                        ((t (:underline t))))
  '(link                             ((t (:inherit (underline) :foreground "#A1EFDF"))))
  '(link-visited                     ((t (:foreground "#B57EDC"))))
  '(fringe                           ((t (:background "#393346"))))
