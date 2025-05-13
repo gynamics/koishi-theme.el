@@ -101,7 +101,7 @@
  '(completions-first-difference     ((t (:foreground "#8BC34A" :background "#2D2D2D"))))
  ;; company
  '(company-tooltip                  ((t (:foreground "#FFFFFF" :background "#2D2D2D"))))
- '(company-tooltip-selection        ((t (:foreground "#C7B8EA" :background "#6C497F"))))
+ '(company-tooltip-selection        ((t (:foreground "#8BC34A" :background "#6C497F"))))
  '(company-tooltip-common           ((t (:foreground "#F1C40F" :background "#343434"))))
  '(company-tooltip-common-selection ((t (:foreground "#CCFF99" :background "#7A5F9E"))))
  ;; isearch
