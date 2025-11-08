@@ -4,7 +4,7 @@ The Emacs theme in your subconsciousness!
 
 * About
 
-A simple dark-color theme based on green-yellow-purple colors.
+A simple color theme based on green-yellow-purple colors, support both light and dark theme..
 This is the exclusive theme for [[https://github.com/gynamics/koishimacs][Koishimacs]] (my Emacs config).
 Inspired by Touhou Project's character Komeiji Koishi's color tone.
 
@@ -18,11 +18,16 @@ But the output is oversaturated.
   (use-package koishi-theme.el
     :vc (:url "https://github.com/gynamics/koishi-theme.el")
     :init
+    ;; don't set koishi-theme-light if you want to use dark theme
+    ;; this variable should be configured before you load theme.
+    (setq 'koishi-theme-light t)
     ;; enable koishi theme
     (load-theme 'koishi))
 #+end_src
 
 * Gallery
+
+** dark
 
 Code highlights:
 
@@ -32,6 +37,16 @@ Code highlights:
 Org mode:
 
 [[https://exiled-images.pages.dev/file/AgACAgUAAyEGAASL6SCLAAMMaBo4PUnYdYjWaAk5TEGcVzNf8qEAAhvAMRvXj9lU-xjLym1K2IsBAAMCAAN3AAM2BA.png]]
+
+** light
+
+Code highlights:
+
+[[https://exiled-images.pages.dev/file/AgACAgUAAyEGAASL6SCLAAMSaQ95ds6gzQrwJZGzSqnJfPqoKS4AAi0Maxuf7nlUmu7o0_CS4VoBAAMCAAN3AAM2BA.png]]
+
+Org mode:
+
+[[https://exiled-images.pages.dev/file/AgACAgUAAyEGAASL6SCLAAMTaQ95vTuqx1EshxcM8qj_Ht8Jt8oAAi4Maxuf7nlUm_zySpcRBvsBAAMCAAN3AAM2BA.png]]
 
 * Development
 

@@ -2,7 +2,7 @@
 
 ;; Author: gynamics
 ;; Maintainer: gynamics
-;; Package-Version: 1.0
+;; Package-Version: 2.0
 ;; Package-Requires: ( )
 ;; URL: https://github.com/gynamics/koishi-theme.el
 ;; Keywords: theme
@@ -32,6 +32,9 @@
 
 ;;; Code:
 
+
+(require 'color)
+
 ;;;###theme-autoload
 (deftheme koishi
   "A sweet dark theme for koishimacs."
@@ -40,8 +43,32 @@
   :background-mode 'dark
   )
 
-(custom-theme-set-faces
- 'koishi
+;;;###autoload
+(defcustom koishi-theme-light nil
+  "Set this variable to t to make it a light theme with complementary colors."
+  :type 'boolean
+  :group 'koishi
+  )
+
+(defun koishi--complementary-theme (sexp)
+  "Replace all RGB color strings in SEXP to its complementary color."
+  (cond
+   ((and (stringp sexp)
+         (string-match "^#\\([0-9A-Fa-f]\\{3\\}\\)\\{1,2\\}$" sexp))
+    (color-complement-hex sexp))
+   ((listp sexp)
+    (mapcar 'koishi--complementary-theme sexp))
+   (t sexp)))
+
+(defun koishi-theme-set-faces (&rest l)
+  "A wrapper to set faces of koishi-theme.
+L is face configuration arguments for `custom-theme-set-faces'."
+  (apply #'custom-theme-set-faces
+         (cons 'koishi
+               (if koishi-theme-light
+                   (koishi--complementary-theme l) l))))
+
+(koishi-theme-set-faces
  ;; basic colors
  '(default                          ((t (:foreground "#F7F7F7" :background "#2D2D2D"))))
  '(cursor                           ((t (:background "#C6CC96"))))
@@ -115,13 +142,13 @@
  '(next-error                       ((t (:foreground "#FFFFFF" :background "#E74CAC"))))
  '(query-replace                    ((t (:foreground "#FFFFFF" :background "#256225"))))
  ;; org-mode
- '(org-document-title               ((t (:foreground "#AEEEEE" :weight bold :height 1.5))))
+ '(org-document-title               ((t (:foreground "#AEEEEE"))))
  '(org-document-info                ((t (:foreground "#A1CEBE"))))
- '(org-level-1                      ((t (:foreground "#C7B8EA" :weight bold :height 1.25))))
- '(org-level-2                      ((t (:foreground "#A7DCCB" :weight bold :height 1.2))))
- '(org-level-3                      ((t (:foreground "#97CEEB" :weight bold :height 1.15))))
- '(org-level-4                      ((t (:foreground "#C7DC3C" :weight bold :height 1.1))))
- '(org-level-5                      ((t (:foreground "#F1C40F" :weight bold :height 1.0))))
+ '(org-level-1                      ((t (:foreground "#C7B8EA"))))
+ '(org-level-2                      ((t (:foreground "#A7DCCB"))))
+ '(org-level-3                      ((t (:foreground "#97CEEB"))))
+ '(org-level-4                      ((t (:foreground "#C7DC3C"))))
+ '(org-level-5                      ((t (:foreground "#F1C40F"))))
  '(org-tag                          ((t (:foreground "#E7C7E7" :box (:line-width 1 :style released-button)))))
  '(org-link                         ((t (:foreground "#AAF0CC" :underline t))))
  '(org-date                         ((t (:foreground "#8CE5DB" :underline t))))
@@ -130,8 +157,8 @@
  '(org-todo                         ((t (:foreground "#FBEB87" :weight bold))))
  '(org-headline-done                ((t (:foreground "#90A0B0"))))
  '(org-block                        ((t (:foreground "#F7F7F7" :background "#343434"))))
- '(org-block-begin-line             ((t (:foreground "#A7A8EA" :weight bold))))
- '(org-block-end-line               ((t (:foreground "#A7A8EA" :weight bold))))
+ '(org-block-begin-line             ((t (:foreground "#A7A8EA"))))
+ '(org-block-end-line               ((t (:foreground "#A7A8EA"))))
  '(org-quote                        ((t (:foreground "#F2C464" :slant italic))))
  '(org-verse                        ((t (:foreground "#F7DC64" :slant italic))))
  '(org-code                         ((t (:foreground "#B7DC9C" :background "#343434"))))
