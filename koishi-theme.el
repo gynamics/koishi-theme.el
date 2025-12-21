@@ -3,9 +3,9 @@
 ;; Author: gynamics
 ;; Maintainer: gynamics
 ;; Package-Version: 2.1
-;; Package-Requires: ( )
+;; Package-Requires: ((emacs "24.1"))
 ;; URL: https://github.com/gynamics/koishi-theme.el
-;; Keywords: theme
+;; Keywords: faces
 
 
 ;; This file is not part of GNU Emacs
