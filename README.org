@@ -4,8 +4,8 @@ The Emacs theme in your subconsciousness!
 
 * About
 
-A simple color theme based on green-yellow-purple colors, support both light and dark theme..
-This is the exclusive theme for [[https://github.com/gynamics/koishimacs][Koishimacs]] (my Emacs config).
+A simple color theme based on green-yellow-purple colors, support both light and dark theme.
+This is the official theme of [[https://github.com/gynamics/koishimacs][Koishimacs]] (my Emacs config).
 Inspired by Touhou Project's character Komeiji Koishi's color tone.
 
 I try to make it in a colorful but undersaturated style.

@@ -1,11 +1,11 @@
-;;; koishi-theme.el --- A sweet dark theme for koishimacs  -*- lexical-binding: t -*-
+;;; koishi-theme.el --- A sweet theme inspired by Koishi's color tone  -*- lexical-binding: t -*-
 
 ;; Author: gynamics
 ;; Maintainer: gynamics
 ;; Package-Version: 2.1
-;; Package-Requires: ( )
+;; Package-Requires: ((emacs "24.1"))
 ;; URL: https://github.com/gynamics/koishi-theme.el
-;; Keywords: theme
+;; Keywords: faces
 
 
 ;; This file is not part of GNU Emacs
@@ -26,8 +26,8 @@
 
 ;;; Commentary:
 
-;; A simple dark-color theme based on green-yellow-purple colors.
-;; This is the exclusive theme for Koishimacs (my Emacs config).
+;; A simple color theme based on green-yellow-purple colors.
+;; This is the official theme for Koishimacs (my Emacs config).
 ;; Inspired by Touhou Project's character Komeiji Koishi's color tone.
 
 ;;; Code:
@@ -40,15 +40,13 @@
   "A sweet dark theme for koishimacs."
   :family 'koishi
   :kind 'color-scheme
-  :background-mode 'dark
-  )
+  :background-mode 'dark)
 
 ;;;###autoload
 (defcustom koishi-theme-light nil
   "Set this variable to t to make it a light theme with complementary colors."
   :type 'boolean
-  :group 'koishi
-  )
+  :group 'koishi)
 
 (defun koishi--complementary-theme (sexp)
   "Replace all RGB color strings in SEXP to its complementary color."
@@ -57,7 +55,7 @@
          (string-match "^#\\([0-9A-Fa-f]\\{3\\}\\)\\{1,2\\}$" sexp))
     (color-complement-hex sexp))
    ((listp sexp)
-    (mapcar 'koishi--complementary-theme sexp))
+    (mapcar #'koishi--complementary-theme sexp))
    (t sexp)))
 
 (defun koishi-theme-set-faces (&rest l)
@@ -170,8 +168,7 @@ L is face configuration arguments for `custom-theme-set-faces'."
  '(org-checkbox                     ((t (:foreground "#E2C464" :box (:line-width 1 :style released-button)))))
  '(org-checkbox-statistics-todo     ((t (:foreground "#FBEB87" :box (:line-width 1 :style released-button)))))
  '(org-checkbox-statistics-done     ((t (:foreground "#8BC34A" :box (:line-width 1 :style released-button)))))
- '(org-list-dt                      ((t (:foreground "#C0C0E1"))))
- )
+ '(org-list-dt                      ((t (:foreground "#C0C0E1")))))
 
 ;;;###autoload
 (when load-file-name
