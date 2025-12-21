@@ -2,7 +2,7 @@
 
 ;; Author: gynamics
 ;; Maintainer: gynamics
-;; Package-Version: 2.0
+;; Package-Version: 2.1
 ;; Package-Requires: ( )
 ;; URL: https://github.com/gynamics/koishi-theme.el
 ;; Keywords: theme
@@ -79,7 +79,7 @@ L is face configuration arguments for `custom-theme-set-faces'."
  '(minibuffer-prompt                ((t (:foreground "#8E44AD" :background "#2D2D2D"))))
  '(region                           ((t (:extend t :background "#535456"))))
  '(highlight                        ((t (:background "#434962"))))
- '(shadow                           ((t (:foreground "#EBDB87"))))
+ '(shadow                           ((t (:foreground "#97AAB6"))))
  '(secondary-selection              ((t (:extend t :foreground "#F7E7D7" :background "#555555"))
                                      (t (:inverse-video t))))
  '(error                            ((t (:foreground "#F078B8"))))
@@ -125,11 +125,12 @@ L is face configuration arguments for `custom-theme-set-faces'."
  '(line-number                      ((t (:foreground "#7787A7" :background "#222222"))))
  '(show-paren-match                 ((t (:foreground "#FFFFFF" :background "#8E44AD"))))
  '(mode-line                        ((t (:foreground "#FFFFFF" :background "#5C3F8E"))))
- '(mode-line-inactive               ((t (:foreground "#CCCCCC" :background "#4B3869"))))
- '(mode-line-emphasis               ((t (:inherit (bold) :foreground "#FBEB87" :background "#5C3F8E"))))
+ '(mode-line-inactive               ((t (:foreground "#CCCCCC" :background "#3B3869"))))
+ '(mode-line-emphasis               ((t (:foreground "#FBEB87" :weight bold))))
  '(mode-line-highlight              ((t (:inherit (button) :foreground "#CCFF99" :background "#5C4F8E"))))
  '(completions-common-part          ((t (:foreground "#F1C40F" :background "#343434"))))
  '(completions-first-difference     ((t (:foreground "#8BC34A" :background "#2D2D2D"))))
+ '(completions-annotations          ((t (:inherit (italic) :foreground "#EBDB87"))))
  ;; company
  '(company-tooltip                  ((t (:foreground "#FFFFFF" :background "#2D2D2D"))))
  '(company-tooltip-selection        ((t (:foreground "#8BC34A" :background "#6C497F"))))
@@ -156,12 +157,12 @@ L is face configuration arguments for `custom-theme-set-faces'."
  '(org-done                         ((t (:foreground "#8BC34A" :strike-through t))))
  '(org-todo                         ((t (:foreground "#FBEB87" :weight bold))))
  '(org-headline-done                ((t (:foreground "#90A0B0"))))
- '(org-block                        ((t (:foreground "#F7F7F7" :background "#343434"))))
- '(org-block-begin-line             ((t (:foreground "#A7A8EA"))))
- '(org-block-end-line               ((t (:foreground "#A7A8EA"))))
+ '(org-block                        ((t (:foreground "#F7F7F7" :background "#222224"))))
+ '(org-block-begin-line             ((t (:foreground "#A7A8EA" :underline t :extend t))))
+ '(org-block-end-line               ((t (:foreground "#A7A8EA" :overline t :extend t))))
  '(org-quote                        ((t (:foreground "#F2C464" :slant italic))))
  '(org-verse                        ((t (:foreground "#F7DC64" :slant italic))))
- '(org-code                         ((t (:foreground "#B7DC9C" :background "#343434"))))
+ '(org-code                         ((t (:foreground "#B7DC9C" :background "#28282A"))))
  '(org-latex-and-related            ((t (:foreground "#D7E7F7"))))
  '(org-special-keyword              ((t (:foreground "#C7B8EA"))))
  '(org-meta-line                    ((t (:foreground "#F7D7E7"))))
