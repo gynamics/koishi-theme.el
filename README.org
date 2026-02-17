@@ -61,7 +61,7 @@ In dark mode, set ~koishi-theme-afterglow-color~ to ~"#514"~, ~koishi-theme-afte
 
 In dark mode, set ~koishi-theme-afterglow-color~ to ~"#39c5bb"~, ~koishi-theme-afterglow-level~ to 0.15
 
-[[https://exiled-images.pages.dev/file/AgACAgUAAyEGAASL6SCLAAMXaXYtnDLZrLWmnpMnpq1RcL5vGVQAAjANaxu1brhX7pwtm25UL4cBAAMCAAN3AAM4BA.jpeg]]
+[[https://exiled-images.pages.dev/file/AgACAgUAAyEGAASL6SCLAAMaaZQp_W311e3qAAHJYmzgt7g65AbnAAIvD2sb21CgVHHBcrwQ5oHjAQADAgADeQADOgQ.jpeg]]
 
 ** hsl bias
 In dark mode, set ~koishi-theme-hsl-bias~ to ~(0.2 -0.1 -0.1)~ :
