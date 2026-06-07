@@ -1,5 +1,7 @@
 #+title: koishi-theme
 
+[[https://melpa.org/#/koishi-theme][file:https://melpa.org/packages/koishi-theme-badge.svg]]
+
 The Emacs theme in your subconsciousness!
 
 * About
