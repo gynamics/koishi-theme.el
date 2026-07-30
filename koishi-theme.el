@@ -2,7 +2,7 @@
 
 ;; Author: gynamics
 ;; Maintainer: gynamics
-;; Package-Version: 3.0
+;; Package-Version: 3.1
 ;; Package-Requires: ((emacs "24.1"))
 ;; URL: https://github.com/gynamics/koishi-theme.el
 ;; Keywords: faces
@@ -42,16 +42,24 @@
   :kind 'color-scheme)
 
 ;;;###autoload
-(defcustom koishi-theme-mode 'nil
-  "Set this variable to t to use complementary color."
-  :type '(choice (const :tag "Dark" nil)
-                 (const :tag "Light" t))
+(defcustom koishi-theme-background-mode 'dark
+  "Koishi theme is a dark theme.
+Set this variable to \\='light to use complementary color.
+Its value will be synchronized to `frame-background-mode'."
+  :set #'(lambda (var value)
+           (set-default var value)
+           (customize-set-variable 'frame-background-mode value))
+  :initialize #'custom-initialize-set
+  :type '(choice (const dark)
+                 (const light))
   :group 'koishi)
 
 (defun koishi-theme-effect--complement (color)
-  "Complement COLOR if `koishi-theme-mode' is set.
+  "Complement COLOR if `koishi-theme-background-mode' is set to \\='light.
 COLOR should be an RGB color string."
-  (if koishi-theme-mode (color-complement-hex color) color))
+  (if (eq 'light koishi-theme-background-mode)
+      (color-complement-hex color)
+    color))
 
 ;;;###autoload
 (defcustom koishi-theme-afterglow-color nil
@@ -223,6 +231,7 @@ The mapping order is determined by `koishi-theme-term-face-names'."
     (font-lock-preprocessor-face      ((t (:foreground "#E989EB"))))
     (font-lock-constant-face          ((t (:foreground "#DFA175"))))
     (font-lock-type-face              ((t (:foreground "#C2F03C"))))
+    (font-lock-regexp-face            ((t (:foreground "#97C7AC"))))
     (font-lock-string-face            ((t (:foreground "#B7DC8C"))))
     (font-lock-number-face            ((t (:foreground "#E5C8BB"))))
     (font-lock-comment-face           ((t (:foreground "#F7D7E7"))))

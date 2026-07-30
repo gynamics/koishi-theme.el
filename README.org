@@ -19,12 +19,14 @@ You can install ~koishi-theme~ from MELPA, this is an example with ~use-package~
   (use-package koishi-theme
     :ensure t
     :init
-    ;; set `koishi-theme-mode' to t if you want to use light theme,
+    ;; set `koishi-theme-background-mode' to 'light if you want to use light theme,
     ;; this variable should be configured before you load theme.
-    (setq koishi-theme-mode t)
+    (setopt koishi-theme-background-mode 'light)
     ;; enable koishi theme
     (load-theme 'koishi))
 #+end_src
+
+You can also change ~koishi-theme-background-mode~ after theme loaded, then run ~koishi-theme-reset-faces~ to reload the theme with new configuration.
 
 From version 3.0 we added some experimental features to all the user modify the behavior of ~koishi-theme~ after it is defined and loaded. The user can put some filter functions (called 'effects') to ~koishi-theme-effects~, and then call ~koishi-theme-reset-faces~ to see the changes. Currently we have implemented some configurable effects, you may configure their behavior with related custom variables.
 
