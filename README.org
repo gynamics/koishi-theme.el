@@ -36,6 +36,12 @@ From version 3.0 we added some experimental features to all the user modify the 
 
 You can find related custom variables by calling ~M-x customize-group RET koishi RET~.
 
+To merge your own custom faces into koishi-theme, there are two ways:
+1. add theme to list ~koishi-theme--faces~ with ~add-to-list~.
+2. use function ~koishi-theme-merge-faces~, which will do automatic light/dark theme conversion.
+
+If you don't merge in this manner, ~koishi-theme-reset-faces~ may not work properly.
+
 * Gallery
 ** dark
 

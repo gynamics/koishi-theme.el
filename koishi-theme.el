@@ -2,7 +2,7 @@
 
 ;; Author: gynamics
 ;; Maintainer: gynamics
-;; Package-Version: 3.1
+;; Package-Version: 3.2
 ;; Package-Requires: ((emacs "24.1"))
 ;; URL: https://github.com/gynamics/koishi-theme.el
 ;; Keywords: faces
@@ -147,17 +147,18 @@ Set this variable to nil if you think it slowed down your startup."
   :type '(repeat function)
   :group 'koishi)
 
-(defun koishi-theme-apply-effects (sexp)
-  "Apply color effects to all RGB color strings in SEXP and replace them."
+(defun koishi-theme-apply-effects (sexp effects)
+  "Apply color EFFECTS to all RGB color strings in SEXP and replace them.
+Be aware: This function does not return a deep copy of SEXP."
   (cond
    ((and (stringp sexp)
          (string-match "^#\\([0-9A-Fa-f]\\{3\\}\\)\\{1,2\\}$" sexp))
     (let ((res sexp))
-      (dolist (f koishi-theme-effects)
+      (dolist (f effects)
         (setq res (funcall f res)))
       res))
    ((listp sexp)
-    (mapcar #'koishi-theme-apply-effects sexp))
+    (mapcar (lambda (face) (koishi-theme-apply-effects face effects)) sexp))
    (t sexp)))
 
 (defvar koishi-theme-term-face-names
@@ -199,7 +200,7 @@ The mapping order is determined by `koishi-theme-term-face-names'."
           (push `(,name ((t (:foreground ,color :background ,color)))) res))))
     (nreverse res)))
 
-(defvar koishi-theme-faces
+(defvar koishi-theme--faces
   `(;; terminal colors
     ,@(koishi-theme-term-faces)
     ;; basic colors
@@ -306,22 +307,32 @@ The mapping order is determined by `koishi-theme-term-face-names'."
     (org-list-dt                      ((t (:foreground "#C0C0E1")))))
   "Default faces for koishi-theme, defined as data.")
 
+(defun koishi-theme-faces ()
+  "Return a list of definitive faces for koishi theme after effects."
+  (if koishi-theme-effects
+      (koishi-theme-apply-effects koishi-theme--faces
+                                  koishi-theme-effects)))
+
 ;; define koishi-theme here
-(apply #'custom-theme-set-faces
-       (cons 'koishi
-             (if koishi-theme-effects
-                 (koishi-theme-apply-effects koishi-theme-faces)
-               koishi-theme-faces)))
+(apply #'custom-theme-set-faces (cons 'koishi (koishi-theme-faces)))
+
+(defun koishi-theme-merge-faces (faces &optional mode)
+  "A helper for merging your own FACES to koishi-theme.
+MODE can be symbol \\='light or \\='dark, default add to dark mode."
+  (setq koishi-theme--faces
+        (append
+         (if (eq mode 'light)
+             (koishi-theme-apply-effect
+              s faces '(koishi-theme-effect--complement))
+           faces)
+         koishi-theme--faces)))
 
 ;;;###autoload
 (defun koishi-theme-reset-faces ()
   "A wrapper to reset koishi-theme after it is loaded.
 This is achieved by calling `custom-set-faces'."
   (interactive)
-  (apply #'custom-set-faces
-         (if koishi-theme-effects
-             (koishi-theme-apply-effects koishi-theme-faces)
-           koishi-theme-faces)))
+  (apply #'custom-set-faces (koishi-theme-faces)))
 
 ;;;###autoload
 (when load-file-name
@@ -329,5 +340,4 @@ This is achieved by calling `custom-set-faces'."
                (file-name-as-directory (file-name-directory load-file-name))))
 
 (provide-theme 'koishi)
-
 ;;; koishi-theme.el ends here
